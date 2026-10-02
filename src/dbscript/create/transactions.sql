@@ -1,0 +1,23 @@
+CREATE TABLE `transactions` (
+  `transaction_id` int NOT NULL,
+  `transaction_name_id` varchar(50) NOT NULL,
+  `transaction_name` varchar(255) NOT NULL,
+  `transaction_description` varchar(255) DEFAULT NULL,
+  `amount` decimal(19,2) DEFAULT NULL,
+  `src_account_id` int NOT NULL,
+  `dest_account_id` int DEFAULT NULL,
+  `category_id` int DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
+  `transaction_date` date DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`),
+  KEY `fk_trans_src_account_id` (`src_account_id`),
+  KEY `fk_trans_desc_account_id` (`dest_account_id`),
+  KEY `fk_trans_category_id` (`category_id`),
+  KEY `fk_trans_customer_id` (`customer_id`),
+  CONSTRAINT `fk_trans_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
+  CONSTRAINT `fk_trans_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
+  CONSTRAINT `fk_trans_desc_account_id` FOREIGN KEY (`dest_account_id`) REFERENCES `accounts` (`account_id`),
+  CONSTRAINT `fk_trans_src_account_id` FOREIGN KEY (`src_account_id`) REFERENCES `accounts` (`account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
