@@ -1,4 +1,4 @@
-package com.monaymanager.demo;
+package com.monaymanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
